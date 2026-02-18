@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Студенты Девятьяров К.Д и Сударчиков Н.В., группа ИСИП23-01П">
+    <meta name="description" content="Лабораторная работа №1 по основам HTML: теги, ссылки, таблицы, фреймы">
+    <meta name="keywords" content="HTML, лабораторная работа, таблицы, фреймы, ссылки, верстка">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №1 - Основы HTML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 15px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a3a6c, #2c5282);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+        
+        nav {
+            background-color: #2d3748;
+            padding: 12px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            display: block;
+        }
+        
+        nav a:hover, nav a:focus {
+            background-color: #4a5568;
+            outline: none;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 25px;
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+            padding-right: 25px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f8fafc;
+            border-left: 3px solid #3182ce;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        section {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        h2 {
+            color: #2c5282;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #2d3748;
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background-color: #ebf4ff;
+            border-left: 4px solid #3182ce;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .tags-example {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: monospace;
+        }
+        
+        .text-formatting {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f9ff;
+            border-radius: 6px;
+        }
+        
+        .text-formatting p {
+            margin: 8px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        table, th, td {
+            border: 1px solid #cbd5e0;
+        }
+        
+        th {
+            background-color: #3182ce;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 15px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        tr:hover {
+            background-color: #ebf4ff;
+        }
+        
+        .iframe-container {
+            margin: 25px 0;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            display: block;
+        }
+        
+        .footer-note {
+            background-color: #edf2f7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        
+        footer {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .main-content {
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Лабораторная работа №1</h1>
+            <div class="subtitle">Основные теги HTML, ссылки, таблицы, фреймы</div>
+            <div class="meta-info">
+                <span>Студенты: Девятьяров К.Д и Сударчиков Н.В., группа ИСИП23-01П</span>
+                <span>Дата выполнения: 17 февраля 2026 г.</span>
+                <span>Преподаватель: Шихова Ю.А.</span>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#structure">Структура сайта</a></li>
+                <li><a href="#html-basics">Основы HTML</a></li>
+                <li><a href="#text-formatting">Форматирование текста</a></li>
+                <li><a href="#tables">Таблицы</a></li>
+                <li><a href="#frames">Фреймы</a></li>
+                <li><a href="#conclusion">Выводы</a></li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/HTML" target="_blank" title="Официальная документация">MDN Web Docs</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content-wrapper">
+            <main class="main-content">
+                <section id="structure">
+                    <h2>1. Структура веб-сайта</h2>
+                    <p>Спроектирована многостраничная структура сайта с главной страницей и разделами:</p>
+                    <ul>
+                        <li><b>index.html</b> - главная страница (данная страница)</li>
+                        <li><b>about.html</b> - информация об авторе</li>
+                        <li><b>gallery.html</b> - галерея изображений</li>
+                        <li><b>contacts.html</b> - контактная информация</li>
+                        <li><b>references.html</b> - полезные ресурсы</li>
+                    </ul>
+                    <p>Навигация реализована через горизонтальное меню в шапке сайта. Все страницы имеют единый стиль оформления и структуру.</p>
+                </section>
+                
+                <section id="html-basics">
+                    <h2>2. Основы языка HTML</h2>
+                    <p>HTML (HyperText Markup Language) — язык разметки гипертекста, используемый для создания документов, независимых от аппаратно-программной платформы. HTML — это не язык программирования, а описательный язык.</p>
+                    
+                    <div class="highlight">
+                        <p><b>Важные особенности HTML:</b></p>
+                        <ul>
+                            <li>Теги не чувствительны к регистру (но рекомендуется использовать нижний регистр)</li>
+                            <li>Большинство тегов являются парными (имеют открывающий и закрывающий тег)</li>
+                            <li>Теги могут быть вложенными, важно соблюдать порядок вложенности</li>
+                            <li>Значения атрибутов рекомендуется заключать в кавычки</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Пример структуры HTML-документа:</h3>
+                    <div class="tags-example">
+                        &lt;!DOCTYPE html&gt;<br>
+                        &lt;html lang="ru"&gt;<br>
+                        &lt;head&gt;<br>
+                        &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                        &nbsp;&nbsp;&lt;title&gt;Заголовок страницы&lt;/title&gt;<br>
+                        &lt;/head&gt;<br>
+                        &lt;body&gt;<br>
+                        &nbsp;&nbsp;&lt;h1&gt;Основной заголовок&lt;/h1&gt;<br>
+                        &nbsp;&nbsp;&lt;p&gt;Текст абзаца&lt;/p&gt;<br>
+                        &lt;/body&gt;<br>
+                        &lt;/html&gt;
+                    </div>
+                </section>
+                
+                <section id="text-formatting">
+                    <h2>3. Форматирование текста</h2>
+                    <p>HTML предоставляет множество тегов для форматирования текста. Ниже приведены примеры использования основных тегов:</p>
+                    
+                    <div class="text-formatting">
+                        <p>Обычный текст — <b>полужирный текст</b> — <i>курсивный текст</i></p>
+                        <p>Верхний <sup>индекс</sup> и нижний <sub>индекс</sub></p>
+                        <p><small>Мелкий текст</small> и <span style="font-size: 1.3em; font-weight: bold;">крупный текст</span></p>
+                        <p>Моноширинный шрифт: <tt>код программы</tt></p>
+                        <p>Заголовки разного уровня:</p>
+                        <h3>Заголовок h3</h3>
+                        <h4>Заголовок h4</h4>
+                        <h5>Заголовок h5</h5>
+                    </div>
+                    
+                    <h3>Списки:</h3>
+                    <div style="display: flex; gap: 30px; margin-top: 15px;">
+                        <div>
+                            <p><b>Маркированный список:</b></p>
+                            <ul>
+                                <li>Элемент списка 1</li>
+                                <li>Элемент списка 2
+                                    <ul>
+                                        <li>Вложенный элемент</li>
+                                        <li>Еще один вложенный</li>
+                                    </ul>
+                                </li>
+                                <li>Элемент списка 3</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><b>Нумерованный список:</b></p>
+                            <ol>
+                                <li>Первый элемент</li>
+                                <li>Второй элемент</li>
+                                <li>Третий элемент</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="tables">
+                    <h2>4. Таблицы</h2>
+                    <p>Таблицы в HTML создаются с помощью тега <code>&lt;table&gt;</code>. Строки формируются тегом <code>&lt;tr&gt;</code>, ячейки заголовков — <code>&lt;th&gt;</code>, ячейки данных — <code>&lt;td&gt;</code>.</p>
+                    
+                    <h3>Пример таблицы: Сравнение версий HTML</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Версия</th>
+                                <th>Год выпуска</th>
+                                <th>Ключевые особенности</th>
+                                <th>Поддержка медиа</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTML 4.01</td>
+                                <td>1999</td>
+                                <td>Стандартизация, разделение структуры и оформления</td>
+                                <td>Ограниченная</td>
+                            </tr>
+                            <tr>
+                                <td>XHTML 1.0</td>
+                                <td>2000</td>
+                                <td>Строгий синтаксис на основе XML</td>
+                                <td>Ограниченная</td>
+                            </tr>
+                            <tr>
+                                <td>HTML5</td>
+                                <td>2014</td>
+                                <td>Семантические теги, нативная поддержка мультимедиа</td>
+                                <td>Полная (видео, аудио, canvas)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="footer-note">
+                        <p><b>Примечание:</b> В современной веб-верстке таблицы рекомендуется использовать только для табличных данных. Для создания макетов страниц следует применять CSS-сетки и флексбоксы.</p>
+                    </div>
+                </section>
+                
+                <section id="frames">
+                    <h2>5. Фреймы (встраиваемые окна)</h2>
+                    <p>В современном HTML традиционные фреймы (<code>&lt;frameset&gt;</code>) считаются устаревшими. Вместо них рекомендуется использовать тег <code>&lt;iframe&gt;</code> для встраивания внешнего контента.</p>
+                    
+                    <h3>Пример использования iframe:</h3>
+                    <p>Ниже представлено встроенное окно с картой учебного заведения:</p>
+                    
+                    <div class="iframe-container">
+                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=37.585%2C55.745%2C37.635%2C55.770&amp;layer=mapnik&amp;marker=55.758%2C37.610" title="Карта учебного заведения">
+                            Ваш браузер не поддерживает плавающие фреймы (iframe).
+                        </iframe>
+                    </div>
+                    
+                    <p>Тег <code>&lt;iframe&gt;</code> имеет следующие важные атрибуты:</p>
+                    <ul>
+                        <li><code>src</code> - адрес встраиваемого ресурса</li>
+                        <li><code>width</code> и <code>height</code> - размеры фрейма</li>
+                        <li><code>title</code> - описание содержимого для доступности</li>
+                        <li><code>sandbox</code> - ограничение функциональности для безопасности</li>
+                    </ul>
+                    
+                    <div class="highlight">
+                        <p><b>Важно:</b> При использовании iframe следует учитывать политику безопасности сайтов. Многие ресурсы запрещают встраивание через заголовок X-Frame-Options. Для учебных целей в данном примере используется карта с разрешением на встраивание.</p>
+                    </div>
+                </section>
+                
+                <section id="conclusion">
+                    <h2>6. Выводы</h2>
+                    <p>В ходе выполнения лабораторной работы были освоены базовые приемы использования языка HTML для создания макета веб-страницы. Были изучены и применены на практике:</p>
+                    <ul>
+                        <li>Структура HTML-документа и основные контейнерные теги</li>
+                        <li>Теги форматирования текста и создания списков</li>
+                        <li>Создание гиперссылок и навигации</li>
+                        <li>Построение таблиц для представления табличных данных</li>
+                        <li>Использование встраиваемых фреймов (iframe) для отображения внешнего контента</li>
+                        <li>Применение мета-тегов для описания документа</li>
+                    </ul>
+                    <p>Современная веб-верстка предполагает разделение структуры (HTML) и оформления (CSS). В данной работе для улучшения читаемости и представления материала использованы минимальные CSS-стили, но основное внимание уделено именно HTML-разметке.</p>
+                    <p>Полученные знания являются фундаментом для дальнейшего изучения веб-технологий, включая CSS, JavaScript и адаптивную верстку.</p>
+                </section>
+            </main>
+            
+            <aside class="sidebar">
+                <h2>Содержание</h2>
+                <ul style="margin-left: 20px; margin-bottom: 25px;">
+                    <li><a href="#structure">Структура сайта</a></li>
+                    <li><a href="#html-basics">Основы HTML</a></li>
+                    <li><a href="#text-formatting">Форматирование текста</a></li>
+                    <li><a href="#tables">Таблицы</a></li>
+                    <li><a href="#frames">Фреймы</a></li>
+                    <li><a href="#conclusion">Выводы</a></li>
+                </ul>
+                
+                <h2>Полезные ссылки</h2>
+                <ul style="margin-left: 20px; margin-bottom: 25px;">
+                    <li><a href="https://html.spec.whatwg.org/" target="_blank">Спецификация HTML</a></li>
+                    <li><a href="https://validator.w3.org/" target="_blank">W3C Валидатор</a></li>
+                    <li><a href="https://caniuse.com/" target="_blank">Can I Use</a></li>
+                    <li><a href="https://html5book.ru/" target="_blank">Учебник HTML5</a></li>
+                </ul>
+                
+                <h2>Мета-информация</h2>
+                <div style="background-color: #edf2f7; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                    <p><b>Кодировка:</b> UTF-8</p>
+                    <p><b>Язык:</b> русский (ru)</p>
+                    <p><b>Версия HTML:</b> HTML5</p>
+                    <p><b>Дата создания:</b> 17.02.2026</p>
+                </div>
+                
+                <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid #cbd5e0;">
+                    <h3 style="margin-bottom: 10px;">Структура сайта</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>index.html</li>
+                        <li>about.html</li>
+                        <li>gallery.html</li>
+                        <li>contacts.html</li>
+                        <li>references.html</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+        
+        <footer>
+            <p>Лабораторная работа №1 по дисциплине "Веб-технологии"</p>
+            <p>Выполнили: студенты группы ИСИП23-01П Девятьяров К.Д и Сударчиков Н.В.</p>
+            <p>© 2026 Учебное заведение. Все права защищены.</p>
+            <p style="margin-top: 8px; font-size: 0.9rem;">Страница создана в ознакомительных целях. Все материалы защищены авторским правом.</p>
+        </footer>
+    </div>
+</body>
+</html>
